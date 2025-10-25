@@ -21,29 +21,29 @@ export default function PotluckMeals() {
   }
 
   async function handleAddMeal(event) {
-    event.preventDefault()
-    const mealName = event.target.elements.mealName.value
-    const guestName = event.target.elements.guestName.value
-    const serves = event.target.elements.serves.value
-    const kindOfDish = event.target.elements.kindOfDish.value
+    event.preventDefault();
+    const mealName = event.target.elements.mealName.value;
+    const guestName = event.target.elements.guestName.value;
+    const serves = event.target.elements.serves.value;
+    const kindOfDish = event.target.elements.kindOfDish.value;
 
     const newMeal = {
-        meal_name: mealName,
-        guest_name: guestName,
-        serves: parseInt(serves),
-        kind_of_dish: kindOfDish
-    }
+      meal_name: mealName,
+      guest_name: guestName,
+      serves: parseInt(serves),
+      kind_of_dish: kindOfDish,
+    };
 
-    await supabase.from("potluck_meals").insert(newMeal)
+    await supabase.from("potluck_meals").insert(newMeal);
 
     const mealList = await supabase.from("potluck_meals").select();
-    const data = mealList.data
-    setMeals(data)
+    const data = mealList.data;
+    setMeals(data);
 
-    event.target.elements.mealName.value = ""
-    event.target.elements.guestName.value = ""
-    event.target.elements.serves.value = ""
-    event.target.elements.kindOfDish.value = ""
+    event.target.elements.mealName.value = "";
+    event.target.elements.guestName.value = "";
+    event.target.elements.serves.value = "";
+    event.target.elements.kindOfDish.value = "";
   }
 
   return (
@@ -84,10 +84,12 @@ export default function PotluckMeals() {
               <label>
                 Kind Of Dish:
                 <select defaultValue="" name="kindOfDish" id="kindOfDish">
-                    <option value="" disabled>Select One</option>
-                    <option value="Appetizer">Appetizer</option>
-                    <option value="Main Course">Main Course</option>
-                    <option value="Desert">Desert</option>
+                  <option value="" disabled>
+                    Select One
+                  </option>
+                  <option value="Appetizer">Appetizer</option>
+                  <option value="Main Course">Main Course</option>
+                  <option value="Desert">Desert</option>
                 </select>
               </label>
             </div>

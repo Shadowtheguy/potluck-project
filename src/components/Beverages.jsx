@@ -1,0 +1,107 @@
+import { useState } from "react";
+import supabase from "../utils/supabase";
+
+export default function Beverages() {
+  const [drinks, setDrinks] = useState([]);
+
+  const drinkDisplay = [];
+  for (let i = 0; i < drinks.length; i++) {
+    drinkDisplay.push(
+      <li>
+        {drinks[i].guest_name} is bringing {drinks[i].beverage_name}, and has
+        enough for {drinks[i].quantity} ({drinks[i].type_of_drink})
+      </li>
+    );
+  }
+
+  async function handleFetchDrinks() {
+    const result = await supabase.from("beverages").select();
+    const data = result.data;
+    setDrinks(data);
+  }
+
+  async function handleAddDrink(event) {
+    event.preventDefault();
+    const drinkName = event.target.elements.drinkName.value;
+    const guestName = event.target.elements.guestName.value;
+    const quantity = event.target.elements.quantity.value;
+    const kindOfDrink = event.target.elements.kindOfDrink.value;
+
+    const newDrink = {
+      beverage_name: drinkName,
+      guest_name: guestName,
+      quantity: parseInt(quantity),
+      type_of_drink: kindOfDrink,
+    };
+
+    console.log(newDrink);
+
+    await supabase.from("beverages").insert(newDrink);
+
+    const drinkList = await supabase.from("beverages").select();
+    const data = drinkList.data;
+    setDrinks(data);
+
+    event.target.elements.drinkName.value = "";
+    event.target.elements.guestName.value = "";
+    event.target.elements.quantity.value = "";
+    event.target.elements.kindOfDrink.value = "";
+  }
+
+  return (
+    <>
+      <section>
+        <div>
+          <h1>placeholder</h1>
+          <button onClick={handleFetchDrinks}>placeholder</button>
+        </div>
+        <div>
+          <ul>{drinkDisplay}</ul>
+        </div>
+        <div>
+          <form onSubmit={handleAddDrink}>
+            {/* Drink Name Input */}
+            <div>
+              <label>
+                Drink Name:
+                <input type="text" name="drinkName" id="drinkName" />
+              </label>
+            </div>
+            {/* Guest Name Input */}
+            <div>
+              <label>
+                Guest Name:
+                <input type="text" name="guestName" id="guestName" />
+              </label>
+            </div>
+            {/* Quanity Input */}
+            <div>
+              <label>
+                Quantity:
+                <input type="number" name="quantity" id="quantity" />
+              </label>
+            </div>
+            {/* Type Of Drink Input */}
+            <div>
+              <label>
+                Type Of Drink:
+                <select defaultValue="" name="kindOfDrink" id="kindOfDrink">
+                  <option value="" disabled>
+                    Select One
+                  </option>
+                  <option value="Soda">Soda</option>
+                  <option value="Juice/Tea">Juice or Tea</option>
+                  <option value="Alcohol">Alcohol</option>
+                </select>
+              </label>
+            </div>
+            {/* Submit Button */}
+            <div>
+              <button type="submit">Add Meal</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </>
+  );
+}
