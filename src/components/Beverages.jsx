@@ -50,42 +50,64 @@ export default function Beverages() {
 
   return (
     <>
-      <section>
+      <section className="container text-center">
         <div>
           <h1>Beverages</h1>
-          <button onClick={handleFetchDrinks}>Get Drink List</button>
+          <button className="btn btn-success" onClick={handleFetchDrinks}>
+            Get Drink List
+          </button>
         </div>
         <div>
-          <ul>{drinkDisplay}</ul>
+          <ul className="text-start border move-center m-1">{drinkDisplay}</ul>
         </div>
-        <div>
+        <div className="form-group">
           <form onSubmit={handleAddDrink}>
             {/* Drink Name Input */}
             <div>
               <label>
                 Drink Name:
-                <input type="text" name="drinkName" id="drinkName" />
+                <input
+                  className="form-control"
+                  type="text"
+                  name="drinkName"
+                  id="drinkName"
+                />
               </label>
             </div>
             {/* Guest Name Input */}
             <div>
               <label>
                 Guest Name:
-                <input type="text" name="guestName" id="guestName" />
+                <input
+                  className="form-control"
+                  type="text"
+                  name="guestName"
+                  id="guestName"
+                />
               </label>
             </div>
             {/* Quanity Input */}
             <div>
               <label>
                 Quantity:
-                <input type="number" name="quantity" id="quantity" />
+                <input
+                  className="form-control"
+                  type="number"
+                  name="quantity"
+                  id="quantity"
+                />
               </label>
             </div>
             {/* Type Of Drink Input */}
             <div>
               <label>
                 Type Of Drink:
-                <select defaultValue="" name="kindOfDrink" id="kindOfDrink">
+                <select
+                  defaultValue=""
+                  name="kindOfDrink"
+                  id="kindOfDrink"
+                  className="form-control"
+                >
                   <option value="" disabled>
                     Select One
                   </option>
@@ -96,8 +118,10 @@ export default function Beverages() {
               </label>
             </div>
             {/* Submit Button */}
-            <div>
-              <button type="submit">Add Drink</button>
+            <div className="m-2">
+              <button className="btn btn-success" type="submit">
+                Add Drink
+              </button>
             </div>
           </form>
         </div>

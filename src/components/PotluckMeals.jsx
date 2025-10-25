@@ -48,42 +48,64 @@ export default function PotluckMeals() {
 
   return (
     <>
-      <section>
+      <section className="container text-center">
         <div>
           <h1>Potluck Meals</h1>
-          <button onClick={handleFetchMeals}>Get Meal List</button>
+          <button onClick={handleFetchMeals} className="btn btn-success">
+            Get Meal List
+          </button>
         </div>
         <div>
-          <ul>{mealsDisplay}</ul>
+          <ul className="text-start border move-center m-1">{mealsDisplay}</ul>
         </div>
-        <div>
+        <div className="form-group">
           <form onSubmit={handleAddMeal}>
             {/* Meal Name Input */}
             <div>
               <label>
                 Meal Name:
-                <input type="text" name="mealName" id="mealName" />
+                <input
+                  className="form-control"
+                  type="text"
+                  name="mealName"
+                  id="mealName"
+                />
               </label>
             </div>
             {/* Guest Name Input */}
             <div>
               <label>
                 Guest Name:
-                <input type="text" name="guestName" id="guestName" />
+                <input
+                  className="form-control"
+                  type="text"
+                  name="guestName"
+                  id="guestName"
+                />
               </label>
             </div>
             {/* Serves Input */}
             <div>
               <label>
                 Serves:
-                <input type="number" name="serves" id="serves" />
+                <input
+                  className="form-control"
+                  type="number"
+                  name="serves"
+                  id="serves"
+                />
               </label>
             </div>
             {/* Kind Of Dish Input */}
             <div>
               <label>
                 Kind Of Dish:
-                <select defaultValue="" name="kindOfDish" id="kindOfDish">
+                <select
+                  className="form-control"
+                  defaultValue=""
+                  name="kindOfDish"
+                  id="kindOfDish"
+                >
                   <option value="" disabled>
                     Select One
                   </option>
@@ -94,8 +116,10 @@ export default function PotluckMeals() {
               </label>
             </div>
             {/* Submit Button */}
-            <div>
-              <button type="submit">Add Meal</button>
+            <div className="m-2">
+              <button className="btn btn-success" type="submit">
+                Add Meal
+              </button>
             </div>
           </form>
         </div>

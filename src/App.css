@@ -1,0 +1,9 @@
+* {
+    background-color: silver;
+}
+
+.move-center {
+    position: relative;
+    left: 31%;
+    width: 500px;
+}

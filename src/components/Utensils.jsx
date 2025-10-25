@@ -8,7 +8,8 @@ export default function Utensils() {
   for (let i = 0; i < utensils.length; i++) {
     utensilDisplay.push(
       <li>
-        {utensils[i].guest_name} is bringing {utensils[i].item_name} ({utensils[i].item_type}), enough for {utensils[i].quantity}
+        {utensils[i].guest_name} is bringing {utensils[i].item_name} (
+        {utensils[i].item_type}), enough for {utensils[i].quantity}
       </li>
     );
   }
@@ -39,50 +40,74 @@ export default function Utensils() {
     const data = utensilList.data;
     setUtensils(data);
 
-    event.target.elements.itemName.value = ""
-    event.target.elements.guestName.value = ""
-    event.target.elements.quantity.value = ""
-    event.target.elements.itemType.value = ""
+    event.target.elements.itemName.value = "";
+    event.target.elements.guestName.value = "";
+    event.target.elements.quantity.value = "";
+    event.target.elements.itemType.value = "";
   }
 
   return (
     <>
-      <section>
+      <section className="container text-center">
         <div>
           <h1>Utensils</h1>
-          <button onClick={handleFetchUtensils}>Get Utensil List</button>
+          <button className="btn btn-success" onClick={handleFetchUtensils}>
+            Get Utensil List
+          </button>
         </div>
         <div>
-          <ul>{utensilDisplay}</ul>
+          <ul className="text-start border move-center m-1">
+            {utensilDisplay}
+          </ul>
         </div>
-        <div>
+        <div className="form-group">
           <form onSubmit={addUtensils}>
             {/* Item Name Input */}
             <div>
               <label>
                 Item Name:
-                <input type="text" name="itemName" id="itemName" />
+                <input
+                  className="form-control"
+                  type="text"
+                  name="itemName"
+                  id="itemName"
+                />
               </label>
             </div>
             {/* Guest Name Input */}
             <div>
               <label>
                 Guest Name:
-                <input type="text" name="guestName" id="guestName" />
+                <input
+                  className="form-control"
+                  type="text"
+                  name="guestName"
+                  id="guestName"
+                />
               </label>
             </div>
             {/* Quantity Input */}
             <div>
               <label>
                 Quantity:
-                <input type="number" name="quantity" id="quantity" />
+                <input
+                  className="form-control"
+                  type="number"
+                  name="quantity"
+                  id="quantity"
+                />
               </label>
             </div>
             {/* Type of Item Input */}
             <div>
               <label>
                 Item Type:
-                <select defaultValue="" name="itemType" id="itemType">
+                <select
+                  className="form-control"
+                  defaultValue=""
+                  name="itemType"
+                  id="itemType"
+                >
                   <option value="" disabled>
                     Select One
                   </option>
@@ -93,8 +118,10 @@ export default function Utensils() {
               </label>
             </div>
             {/* Submit Button */}
-            <div>
-                <button type="Submit">Add Utensils</button>
+            <div className="m-2">
+              <button className="btn btn-success" type="Submit">
+                Add Utensils
+              </button>
             </div>
           </form>
         </div>
