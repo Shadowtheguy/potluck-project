@@ -50,8 +50,8 @@ export default function PotluckMeals() {
     <>
       <section>
         <div>
-          <h1>placeholder</h1>
-          <button onClick={handleFetchMeals}>placeholder</button>
+          <h1>Potluck Meals</h1>
+          <button onClick={handleFetchMeals}>Get Meal List</button>
         </div>
         <div>
           <ul>{mealsDisplay}</ul>

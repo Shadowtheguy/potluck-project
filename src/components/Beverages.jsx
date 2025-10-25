@@ -52,8 +52,8 @@ export default function Beverages() {
     <>
       <section>
         <div>
-          <h1>placeholder</h1>
-          <button onClick={handleFetchDrinks}>placeholder</button>
+          <h1>Beverages</h1>
+          <button onClick={handleFetchDrinks}>Get Drink List</button>
         </div>
         <div>
           <ul>{drinkDisplay}</ul>
@@ -97,7 +97,7 @@ export default function Beverages() {
             </div>
             {/* Submit Button */}
             <div>
-              <button type="submit">Add Meal</button>
+              <button type="submit">Add Drink</button>
             </div>
           </form>
         </div>
